@@ -1,0 +1,6 @@
+Copying topology file from /oasis/projects/nsf/azs119/edisj/Comet/datafiles/YiiP_system.pdb into /oasis/scratch/comet/edisj/temp_project/benchmarking2/37331394
+Copying trajectory file from /oasis/projects/nsf/azs119/edisj/Comet/datafiles/YiiP_system_9ns_center100x.h5md into /oasis/scratch/comet/edisj/temp_project/benchmarking2/37331394
+Running benchmark for 4 nodes, 96 processes
+Running benchmark for 4 nodes, 96 processes
+Running benchmark for 4 nodes, 96 processes
+Purging scratch files
