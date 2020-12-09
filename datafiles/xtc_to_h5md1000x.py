@@ -41,8 +41,8 @@ def create_test_trj(uni, filename):
 def main():
     yiip = datasets.fetch_yiip_equilibrium_short()
 
-    u = mda.Universe(yiip.topology, 100*[yiip.trajectory])
-    create_test_trj(u, '/oasis/projects/nsf/azs119/edisj/Comet/datafiles/YiiP_system_9ns_center100x.h5md')
+    u = mda.Universe(yiip.topology, 1000*[yiip.trajectory])
+    create_test_trj(u, '/oasis/projects/nsf/azs119/edisj/Comet/datafiles/YiiP_system_9ns_center1000x.h5md')
 
 
 if __name__ == '__main__':
