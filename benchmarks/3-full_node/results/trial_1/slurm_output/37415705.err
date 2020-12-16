@@ -1,0 +1,16 @@
++ sbatch --dependency=37415705 /oasis/projects/nsf/azs119/edisj/Comet/benchmarks/3-full_node/scripts/2node28.sh trial_1 3
+sbatch: error: Unable to open file /oasis/projects/nsf/azs119/edisj/Comet/benchmarks/3-full_node/scripts/2node28.sh
++ TEST_TOP=/oasis/scratch/comet/edisj/temp_project/benchmarking/datafiles/YiiP_system.pdb
++ TEST_TRAJ=/oasis/scratch/comet/edisj/temp_project/benchmarking/datafiles/YiiP_system_9ns_center100x.h5md
++ testdir=/oasis/scratch/comet/edisj/temp_project/benchmarking/37415705
++ mkdir -p /oasis/scratch/comet/edisj/temp_project/benchmarking/37415705
++ cp /oasis/scratch/comet/edisj/temp_project/benchmarking/datafiles/YiiP_system.pdb /oasis/scratch/comet/edisj/temp_project/benchmarking/37415705
+
+real	0m0.027s
+user	0m0.000s
+sys	0m0.014s
++ cp /oasis/scratch/comet/edisj/temp_project/benchmarking/datafiles/YiiP_system_9ns_center100x.h5md /oasis/scratch/comet/edisj/temp_project/benchmarking/37415705
+
+real	89m37.327s
+user	0m0.045s
+sys	2m7.301s
