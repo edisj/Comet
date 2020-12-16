@@ -5,7 +5,6 @@
 #SBATCH --partition=compute       # partition
 #SBATCH -e 12node264.%j.err # file to save job's STDERR (%j = JobId)
 #SBATCH -o 12node264.%j.out # file to save job's STDOUT (%j = JobId)
-#SBATCH --export=ALL
 #SBATCH -t 01:00:00   # time in hh:mm:ss
 #SBATCH --mail-type=ALL # Send an e-mail when a job starts, stops, or fails
 #SBATCH --mail-user=ejakupov@asu.edu # Mail-to address
