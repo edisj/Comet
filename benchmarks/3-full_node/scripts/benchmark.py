@@ -3,7 +3,6 @@ from MDAnalysis.analysis.rms import rmsd
 from mpi4py import MPI
 import numpy as np
 import time
-import datetime
 import os
 import argparse
 
@@ -74,18 +73,17 @@ def benchmark(topology, trajectory):
     t_set_units = ts.timing.set_units
 
     block_times = np.array((rank, t_init, t_init_top, t_init_traj, t_open_traj,
-                            t_n_atoms, t_set_units,
-                            total_io, total_io/bsize, total_copy_data, total_copy_box,
-                            total_get_dataset, total_set_ts_position, total_convert_units,
-                            total_rmsd, total_rmsd/bsize, 0., 0., 0.),
+                            t_n_atoms, t_set_units, total_io, total_io/bsize,
+                            total_copy_data, total_copy_box, total_get_dataset,
+                            total_set_ts_position, total_convert_units,
+                            total_rmsd, total_rmsd/bsize, 0., 0., 0., 0.),
                             dtype=float)
+    n_columns = len(block_times)
 
+    # checking for straggling processes
     with timeit() as wait_time:
         comm.Barrier()
     t_wait = wait_time.elapsed
-
-    # close trajectory now to avoid MPI errors when MPI finalizes
-    u.trajectory.close()
 
     # time how long it takes for proceses to gather the data
     with timeit() as comm_gather:
@@ -95,27 +93,34 @@ def benchmark(topology, trajectory):
         comm.Gatherv(sendbuf=rmsd_array, recvbuf=(rmsd_buffer, sendcounts), root=0)
     t_comm_gather = comm_gather.elapsed
 
+    # close trajectory now to avoid MPI errors when MPI finalizes
+    with timeit() as close_traj:
+        u.trajectory.close()
+    t_close_traj = close_traj.elapsed
+
     # total benchmark time per rank
     total_time = t_init + total_io + total_rmsd + t_wait + t_comm_gather
 
     # gather communication and total times into rank 0
     t_wait = comm.gather(t_wait, root=0)
     t_comm_gather = comm.gather(t_comm_gather, root=0)
+    t_close_traj = comm.gather(t_close_traj, root=0)
     total_time = comm.gather(total_time, root=0)
 
     # gather times from each block into times_array
     times_buffer = None
     if rank == 0:
-        times_buffer = np.empty(19*size, dtype=float)
+        times_buffer = np.empty(n_columns*size, dtype=float)
     comm.Gather(sendbuf=block_times, recvbuf=times_buffer, root=0)
 
     if rank == 0:
-        # turn 1 dimensional vector into size x 20 matrix where the
+        # turn 1 dimensional vector into size x n_columns matrix where the
         # columns are t_loop, t_rmsd, etc and rows are each rank
-        times_buffer = times_buffer.reshape(size, 19)
+        times_buffer = times_buffer.reshape(size, n_columns)
 
-        times_buffer[:, -3] = t_wait
-        times_buffer[:, -2] = t_comm_gather
+        times_buffer[:, -4] = t_wait
+        times_buffer[:, -3] = t_comm_gather
+        times_buffer[:, -2] = t_close_traj
         times_buffer[:, -1] = total_time
 
         return times_buffer, rmsd_buffer
@@ -226,7 +231,6 @@ if __name__ == "__main__":
 
     if rank == 0:
         data_path = '/oasis/projects/nsf/azs119/edisj/Comet/benchmarks/3-full_node/results/'
-        #date = str(datetime.date.today()) + '/'
 
         os.makedirs(os.path.join(data_path, args.directory_name + '/'), exist_ok=True)
 
