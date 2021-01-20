@@ -1,0 +1,12 @@
++ sbatch --dependency=37675762 /oasis/projects/nsf/azs119/edisj/Comet/benchmarks/in_memory_1/scripts/1node1.sh trial_1 3
++ TEST_TOP=/oasis/scratch/comet/edisj/temp_project/benchmarking/datafiles/YiiP_system.pdb
++ TEST_TRAJ=/oasis/scratch/comet/edisj/temp_project/benchmarking/datafiles/YiiP_system_9ns_center100x.h5md
++ testdir=/oasis/scratch/comet/edisj/temp_project/benchmarking/37675762
++ mkdir -p /oasis/scratch/comet/edisj/temp_project/benchmarking/37675762
++ cp /oasis/scratch/comet/edisj/temp_project/benchmarking/datafiles/YiiP_system.pdb /oasis/scratch/comet/edisj/temp_project/benchmarking/37675762
+
+real	0m0.027s
+user	0m0.000s
+sys	0m0.015s
++ cp /oasis/scratch/comet/edisj/temp_project/benchmarking/datafiles/YiiP_system_9ns_center100x.h5md /oasis/scratch/comet/edisj/temp_project/benchmarking/37675762
+slurmstepd: *** JOB 37675762 ON comet-28-10 CANCELLED AT 2021-01-06T12:36:53 ***
