@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #SBATCH --nodes=1  # number of nodes
-#SBATCH --ntasks-per-node=1  # number of cores
+#SBATCH --ntasks-per-node=24  # number of cores
 #SBATCH --partition=compute       # partition
 #SBATCH -e 1node1.%j.err # file to save job's STDERR (%j = JobId)
 #SBATCH -o 1node1.%j.out # file to save job's STDOUT (%j = JobId)
