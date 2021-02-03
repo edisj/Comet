@@ -1,0 +1,16 @@
++ sbatch --dependency=38247842 /oasis/projects/nsf/azs119/edisj/Comet/benchmarks/stripe_mem_mask/scripts/1node1_24.sh stripe24_1 1
+Submitted batch job 38247862
++ TEST_TOP=/oasis/scratch/comet/edisj/temp_project/benchmarking/datafiles/YiiP_system.pdb
++ TEST_TRAJ=/oasis/scratch/comet/edisj/temp_project/benchmarking/datafiles/YiiP_system_9ns_center100x.h5md
++ testdir=/oasis/scratch/comet/edisj/temp_project/stripe24/38247842
++ mkdir -p /oasis/scratch/comet/edisj/temp_project/stripe24/38247842
++ cp /oasis/scratch/comet/edisj/temp_project/benchmarking/datafiles/YiiP_system.pdb /oasis/scratch/comet/edisj/temp_project/stripe24/38247842
+
+real	0m0.498s
+user	0m0.000s
+sys	0m0.016s
++ cp /oasis/scratch/comet/edisj/temp_project/benchmarking/datafiles/YiiP_system_9ns_center100x.h5md /oasis/scratch/comet/edisj/temp_project/stripe24/38247842
+
+real	204m25.955s
+user	0m0.034s
+sys	2m36.615s
