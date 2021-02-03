@@ -216,7 +216,7 @@ if __name__ == "__main__":
     times_array, rmsd_array = benchmark(topology, trajectory)
 
     if rank == 0:
-        data_path = '/oasis/projects/nsf/azs119/edisj/Comet/benchmarks/mask_and_memory/results/'
+        data_path = '/oasis/projects/nsf/azs119/edisj/Comet/benchmarks/stripe_mem_mask/results/'
 
         os.makedirs(os.path.join(data_path, args.directory_name + '/'), exist_ok=True)
 
