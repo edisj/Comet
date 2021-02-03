@@ -3,9 +3,6 @@
 #SBATCH --nodes=1  # number of nodes
 #SBATCH --ntasks-per-node=1  # number of cores
 #SBATCH --partition=compute       # partition
-#SBATCH -e %j.err # file to save job's STDERR (%j = JobId)
-#SBATCH -o %j.out # file to save job's STDOUT (%j = JobId)
-#SBATCH --export=ALL
 #SBATCH -t 05:00:00   # time in hh:mm:ss
 
 #echo commands to stdout

@@ -34,7 +34,7 @@ def benchmark(topology, trajectory):
 
             x_ref = CA.positions.copy()
             n_frames = len(u.trajectory)
-            if (size == 1) or (size == 28):
+            if (size == 1) or (size == 24):
                 n_frames = n_frames//2
             slices = make_balanced_slices(n_frames, size, start=0, stop=n_frames, step=1)
             # give each rank unique start and stop points
@@ -70,6 +70,10 @@ def benchmark(topology, trajectory):
     with timeit() as wait_time:
         comm.Barrier()
     t_wait = wait_time.elapsed
+
+    if (size == 1) or (size == 24):
+        total_io = total_io*2
+        total_rmsd = total_rmsd*2
 
     # time how long it takes for proceses to gather the data
     with timeit() as comm_gather:
@@ -212,7 +216,7 @@ if __name__ == "__main__":
     times_array, rmsd_array = benchmark(topology, trajectory)
 
     if rank == 0:
-        data_path = '/oasis/projects/nsf/azs119/edisj/Comet/benchmarks/in_memory_1/results/'
+        data_path = '/oasis/projects/nsf/azs119/edisj/Comet/benchmarks/mask_and_memory/results/'
 
         os.makedirs(os.path.join(data_path, args.directory_name + '/'), exist_ok=True)
 
