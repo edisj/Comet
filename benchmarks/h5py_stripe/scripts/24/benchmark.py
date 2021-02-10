@@ -209,7 +209,7 @@ if __name__ == "__main__":
     times_array, rmsd_array = benchmark(trajectory, indices, n_frames)
 
     if rank == 0:
-        data_path = '/oasis/projects/nsf/azs119/edisj/Comet/benchmarks/h5py/results/'
+        data_path = '/oasis/projects/nsf/azs119/edisj/Comet/benchmarks/h5py_stripe/results/'
 
         os.makedirs(os.path.join(data_path, args.directory_name + '/'), exist_ok=True)
 
