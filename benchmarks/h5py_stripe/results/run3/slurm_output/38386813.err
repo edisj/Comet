@@ -1,0 +1,15 @@
++ sbatch --dependency=38386813 /oasis/projects/nsf/azs119/edisj/Comet/benchmarks/h5py_stripe/scripts/24/4node84.sh run3 2
++ TEST_TOP=/oasis/projects/nsf/azs119/edisj/Comet/datafiles/YiiP_system.pdb
++ TEST_TRAJ=/oasis/projects/nsf/azs119/edisj/Comet/datafiles/YiiP_system_9ns_center100x.h5md
++ testdir=/oasis/scratch/comet/edisj/temp_project/stripe24/38386813
++ mkdir -p /oasis/scratch/comet/edisj/temp_project/stripe24/38386813
++ cp /oasis/projects/nsf/azs119/edisj/Comet/datafiles/YiiP_system.pdb /oasis/scratch/comet/edisj/temp_project/stripe24/38386813
+
+real	0m0.258s
+user	0m0.000s
+sys	0m0.016s
++ cp /oasis/projects/nsf/azs119/edisj/Comet/datafiles/YiiP_system_9ns_center100x.h5md /oasis/scratch/comet/edisj/temp_project/stripe24/38386813
+
+real	30m9.561s
+user	0m0.055s
+sys	2m47.129s
