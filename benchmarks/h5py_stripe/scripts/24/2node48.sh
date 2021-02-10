@@ -17,7 +17,7 @@ module load openmpi_ib/3.1.4
 module load hdf5/1.10.3
 source activate mda8
 
-testdir=/oasis/scratch/comet/edisj/temp_project/benchmarking/$SLURM_JOB_DEPENDENCY
+testdir=/oasis/scratch/comet/edisj/temp_project/stripe24/$SLURM_JOB_DEPENDENCY
 
 export OMP_NUM_THREADS=1
 
