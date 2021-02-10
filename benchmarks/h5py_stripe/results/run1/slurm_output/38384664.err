@@ -1,0 +1,12 @@
++ sbatch --dependency=38384664 /oasis/projects/nsf/azs119/edisj/Comet/benchmarks/h5py_stripe/scripts/24/1node24.sh run1 1
++ TEST_TOP=/oasis/projects/nsf/azs119/edisj/Comet/datafiles/YiiP_system.pdb
++ TEST_TRAJ=/oasis/projects/nsf/azs119/edisj/Comet/datafiles/YiiP_system_9ns_center100x.h5md
++ testdir=/oasis/scratch/comet/edisj/temp_project/stripe24/38384664
++ mkdir -p /oasis/scratch/comet/edisj/temp_project/stripe24/38384664
++ cp /oasis/projects/nsf/azs119/edisj/Comet/datafiles/YiiP_system.pdb /oasis/scratch/comet/edisj/temp_project/stripe24/38384664
+
+real	0m0.157s
+user	0m0.001s
+sys	0m0.016s
++ cp /oasis/projects/nsf/azs119/edisj/Comet/datafiles/YiiP_system_9ns_center100x.h5md /oasis/scratch/comet/edisj/temp_project/stripe24/38384664
+slurmstepd: *** JOB 38384664 ON comet-12-66 CANCELLED AT 2021-02-09T23:49:10 ***
