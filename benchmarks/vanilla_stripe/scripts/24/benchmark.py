@@ -48,7 +48,7 @@ def benchmark(topology, trajectory):
     total_io = 0
     total_rmsd = 0
     rmsd_array = np.empty(bsize, dtype=float)
-    for i, frame in enumerate(range(len(u.trajectory))):
+    for i, frame in enumerate(range(start, stop)):
         # input/output time
         with timeit() as io:
             ts = u.trajectory[frame]
