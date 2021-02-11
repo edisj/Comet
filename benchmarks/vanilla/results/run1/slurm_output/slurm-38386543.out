@@ -1,0 +1,6 @@
+Submitted batch job 38386603
+
+real	0m0.039s
+user	0m0.000s
+sys	0m0.014s
+slurmstepd: *** JOB 38386543 ON comet-10-12 CANCELLED AT 2021-02-10T02:17:14 ***
