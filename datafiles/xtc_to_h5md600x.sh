@@ -15,4 +15,4 @@ module load openmpi_ib/3.1.4
 module load hdf5/1.10.3
 source activate mda8
 
-python dcd_to_h5md600x.py
+python xtc_to_h5md600x.py

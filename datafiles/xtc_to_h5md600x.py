@@ -9,11 +9,8 @@ def create_test_trj(uni, filename):
         trajectory = f.particles_group('trajectory')
         obsv = f.require_group('observables')
 
-        ag = uni.select_atoms("(resid 1:29 or resid 60:121 or resid 160:214) and name CA")
-        indices = ag.indices
-
         positions = pyh5md.element(trajectory, 'position', store='time',
-                                   data=uni.trajectory.ts.positions[indices],
+                                   data=uni.trajectory.ts.positions,
                                    time=True)
         f['particles/trajectory/position/value'].attrs['unit'] = 'Angstrom'
         f['particles/trajectory/position/time'].attrs['unit'] = 'ps'
@@ -35,23 +32,23 @@ def create_test_trj(uni, filename):
         f['particles/trajectory/box/edges/value'].attrs['unit'] = 'Angstrom'
 
         for ts in uni.trajectory:
-            trajectory.box.edges.append(ts.triclinic_dimensions,
+            trajectory.box.edges.append(uni.trajectory.ts.triclinic_dimensions,
                                         ts.frame, time=ts.time)
-            positions.append(ts.positions[indices],
+            positions.append(uni.trajectory.ts.positions,
                              ts.frame, time=ts.time)
-            data_step.append(ts.data['step'],
+            data_step.append(uni.trajectory.ts.data['step'],
                              ts.frame, time=ts.time)
-            data_dt.append(ts.data['dt'],
+            data_dt.append(uni.trajectory.ts.data['dt'],
                              ts.frame, time=ts.time)
 
 
 
 def main():
-    top = 'adk4AKE.psf'
-    traj = '1ake_007-nowater-core-dt240ps.dcd'
+    top = '/oasis/projects/nsf/azs119/edisj/Comet/datafiles/adk4AKE.psf'
+    traj = '/oasis/projects/nsf/azs119/edisj/Comet/datafiles/xtc600x.xtc'
 
-    u = mda.Universe(top, 600*[traj])
-    create_test_trj(u, '/oasis/projects/nsf/azs119/edisj/Comet/datafiles/small_traj.h5md')
+    u = mda.Universe(top, traj)
+    create_test_trj(u, '/oasis/projects/nsf/azs119/edisj/Comet/datafiles/xtc600x.h5md')
 
 
 if __name__ == '__main__':
