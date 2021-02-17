@@ -9,11 +9,11 @@ def create_test_trj(uni, filename):
         trajectory = f.particles_group('trajectory')
         obsv = f.require_group('observables')
 
-        ag = u.select_atoms("(resid 1:29 or resid 60:121 or resid 160:214) and name CA")
+        ag = uni.select_atoms("(resid 1:29 or resid 60:121 or resid 160:214) and name CA")
         indices = ag.indices
 
         positions = pyh5md.element(trajectory, 'position', store='time',
-                                   data=uni.trajectory.ts.positions,
+                                   data=uni.trajectory.ts.positions[indices],
                                    time=True)
         f['particles/trajectory/position/value'].attrs['unit'] = 'Angstrom'
         f['particles/trajectory/position/time'].attrs['unit'] = 'ps'
@@ -34,12 +34,12 @@ def create_test_trj(uni, filename):
                               step_from=positions)
         f['particles/trajectory/box/edges/value'].attrs['unit'] = 'Angstrom'
 
-        for ts in uni.trajectory[indices]:
+        for ts in uni.trajectory:
             trajectory.box.edges.append(ts.triclinic_dimensions,
                                         ts.frame, time=ts.time)
-            positions.append(ts.positions,
+            positions.append(ts.positions[indices],
                              ts.frame, time=ts.time)
-            data_step.append(.ts.data['step'],
+            data_step.append(ts.data['step'],
                              ts.frame, time=ts.time)
             data_dt.append(ts.data['dt'],
                              ts.frame, time=ts.time)
