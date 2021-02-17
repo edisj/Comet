@@ -1,0 +1,9 @@
+sbatch: error: Unable to open file /oasis/projects/nsf/azs119/edisj/Comet/benchmarks/Khosh_comparison/scripts/2node24.sh
+
+real	0m0.082s
+user	0m0.000s
+sys	0m0.061s
+
+real	0m5.318s
+user	0m0.003s
+sys	0m5.183s

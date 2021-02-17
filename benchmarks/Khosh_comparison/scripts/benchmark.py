@@ -54,7 +54,7 @@ def benchmark(topology, trajectory):
         total_io += io.elapsed
         # rmsd calculation time
         with timeit() as rms:
-            rmsd_array[i] = rmsd(u.trajectory.ts.positions.positions, x_ref, superposition=True)
+            rmsd_array[i] = rmsd(u.trajectory.ts.positions, x_ref, superposition=True)
         total_rmsd += rms.elapsed
 
     # checking for straggling processes
