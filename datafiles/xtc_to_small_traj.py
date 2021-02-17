@@ -50,7 +50,7 @@ def main():
     top = '/oasis/projects/nsf/azs119/edisj/Comet/datafiles/adk4AKE.psf'
     traj = '/oasis/projects/nsf/azs119/edisj/Comet/datafiles/xtc600x.xtc'
 
-    u = mda.Universe(top, 600*[traj])
+    u = mda.Universe(top, traj)
     create_test_trj(u, '/oasis/projects/nsf/azs119/edisj/Comet/datafiles/small_traj.h5md')
 
 
