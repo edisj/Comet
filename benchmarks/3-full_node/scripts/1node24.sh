@@ -21,6 +21,6 @@ testdir=/oasis/scratch/comet/edisj/temp_project/benchmarking/$SLURM_JOB_DEPENDEN
 
 export OMP_NUM_THREADS=1
 
-time ibrun -np 24 python -W ignore /oasis/projects/nsf/azs119/edisj/Comet/benchmarks/3-full_node/scripts/benchmark.py $testdir/YiiP_system.pdb $testdir/YiiP_system_9ns_center100x.h5md $1/1node_$2
+time ibrun -np 24 python -W ignore /oasis/projects/nsf/azs119/edisj/Comet/benchmarks/h5py/scripts/benchmark.py $testdir/YiiP_system.pdb $testdir/YiiP_system_9ns_center100x.h5md $1/1node_$2
 
 rm -r $testdir
